@@ -1,0 +1,6 @@
+[submodule "LlamaFactory"]
+	path = LlamaFactory
+	url = https://github.com/hiyouga/LlamaFactory
+[submodule "lmm-r1"]
+	path = lmm-r1
+	url = https://github.com/TideDra/lmm-r1

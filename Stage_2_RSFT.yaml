@@ -1,0 +1,42 @@
+### model
+model_name_or_path: YOUR MODEL
+trust_remote_code: true
+
+### method
+stage: sft
+do_train: true
+finetuning_type: full
+lora_rank: 8
+lora_target: all
+lora_dropout: 0.1
+freeze_vision_tower: False
+
+### dataset
+dataset: YOUR DATASET
+template: qwen2_vl 
+overwrite_cache: true
+preprocessing_num_workers: 8
+dataloader_num_workers: 4
+
+### output
+output_dir: /eagle/PBML/mistrydev/qwen_vit_unfrozen
+
+# save_only_model: true
+logging_steps: 10
+save_steps: 100
+overwrite_output_dir: true
+save_only_model: true
+report_to: tensorboard
+logging_dir: ./outputs/logs
+
+
+### train
+# resume_from_checkpoint: /eagle/PBML/mistrydev/qwen2/LLaMA-Factory/outputs/qwen2.5_Version_4/checkpoint-85400
+per_device_train_batch_size: 4
+gradient_accumulation_steps: 1
+learning_rate: 1.0e-4
+num_train_epochs: 10
+lr_scheduler_type: cosine
+warmup_ratio: 0.1
+bf16: true
+deepspeed: ds_z3_config.json
