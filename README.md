@@ -1,4 +1,7 @@
 # REVL-PV: Reasoning-Boosted Vision-Language for Photovoltaics
+[![preprint](https://img.shields.io/badge/arXiv-2410.07163-B31B1B)](https://arxiv.org/abs/2603.26776)
+
+This is the official repo for the paper: [From Prediction to Diagnosis: Reasoning-Aware AI for Photovoltaic Defect Inspection](https://arxiv.org/abs/2603.26776).
 
 A domain-aware, reasoning-based vision-language framework for photovoltaic defect diagnosis. Rather than treating defect classification as direct pattern recognition, REVL-PV integrates photovoltaic-specific domain knowledge with structured diagnostic reasoning, mirroring the Evidence→Cause→Action logic employed by human inspectors.
 
@@ -107,6 +110,19 @@ TEST_IMAGE_PATH = "YOUR IMAGE PATH HERE"
 
 ```bash
 python Stage_4_TTA_inference.py
+```
+
+---
+
+## How to Cite
+
+```
+@article{mistry2026prediction,
+  title={From Prediction to Diagnosis: Reasoning-Aware AI for Photovoltaic Defect Inspection},
+  author={Mistry, Dev and Qiu, Feng and Chen, Bo and Liu, Feng and Chen, Can and Shahidehpour, Mohammad and Wang, Ren},
+  journal={arXiv preprint arXiv:2603.26776},
+  year={2026}
+}
 ```
 
 ---
