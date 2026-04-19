@@ -164,15 +164,27 @@ def run_tta_inference(image_path: str, instruction: str):
         final_label = global_res['label']
     else:
         is_global_defect = global_res['label'] != "CLEAN PANEL"
-        is_crop_defect   = crop_majority != "CLEAN PANEL"
-        
+        is_crop_defect = crop_majority != "CLEAN PANEL"
+
         if is_crop_defect and not is_global_defect:
             winner = next(r for r in crop_res if r['label'] == crop_majority)
             final_text = winner['text']
             final_label = winner['label']
+
         elif is_global_defect and not is_crop_defect:
-            final_text = global_res['text']
-            final_label = global_res['label']
+            any_crop_confirms = any(
+                r['label'] == global_res['label'] for r in crop_res
+            )
+            if any_crop_confirms:
+                final_text = global_res['text']
+                final_label = global_res['label']
+            else:
+                clean_crop = next(
+                    (r for r in crop_res if r['label'] == "CLEAN PANEL"), crop_res[0]
+                )
+                final_text = clean_crop['text']
+                final_label = "CLEAN PANEL"
+
         else:
             winner = next((r for r in crop_res if r['label'] == crop_majority), crop_res[0])
             final_text = winner['text']
