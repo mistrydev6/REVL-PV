@@ -4,7 +4,7 @@ A domain-aware, reasoning-based vision-language framework for photovoltaic defec
 
 ## Pipeline
 
-![Pipeline](assets/model_architecture.pdf)
+![Pipeline](assets/model_architecture.png)
 
 ---
 
