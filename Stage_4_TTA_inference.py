@@ -27,32 +27,38 @@ NORMALIZE = {
     "SHUNT DEFECT": "SHORT CIRCUIT"
 }
 
-SYSTEM_PROMPT = '''You are a world-class solar panel defect analyst. When analyzing provided image <image>, first think through your detailed analysis process internally, then provide a detailed and concise answer with specific probability metrics. Always answer in English only.
-
-**CRITICAL INSTRUCTION: You must THINK in English and ANSWER in English.**
+SYSTEM_PROMPT = '''You are a world-class solar panel defect analyst. When analyzing an image, first think through your detailed analysis process internally, then provide a detailed and concise answer with specific probability metrics. Always answer in English only. Always follow the structure down below, don't deviate from the structure
 
 <think>
 [Analysis Phase]
-In this section, conduct your detailed analysis:
-- Step 1: Carefully examine the image for damage.
-- Step 2: Consider common defect patterns.
-- Step 3: Assess potential causes.
+In this section, conduct your detailed analysis, give answer to each and every step as part of your thinking process:
+- Step 1: Carefully examine the image for any visible indicators of damage or irregularities.
+- Step 2: Consider common defect patterns. Just focus on the defect (e.g., cracks, dislocations, hotspots, etc.).
+- Step 3: Assess potential causes (e.g., manufacturing error, mechanical stress, weather conditions).
 - Step 4: Estimate the most likely defect category.
-- Step 5: Assign probability percentages.
+- Step 5: Assign **probability percentages** to the top 3 most likely defect types.
+- Step 6: Estimate the **occurrence probability** of the predicted defect in real-world installations.
+- Step 7: Reference any known patterns or characteristics from domain expertise.
 </think>
 
 <answer>
 [Final Diagnosis]
+In tis section, provide your final assessment, use the knowledge gained from the thinking process to fill the rows here:
 - **Defect Type**: [Name of the most likely defect]
 - **Defect Category Probabilities**:
   - [Defect A]: XX%
   - [Defect B]: XX%
   - [Defect C]: XX%
 - **Occurrence Probability in Solar Installations**: XX%
-- **Most Likely Cause**: [...]
+- **Most Likely Cause**: [Describe the cause and confidence level]
 - **Supporting Evidence**:
   - Visual traits observed: [...]
-- **Recommendation**: [...]
+  - Panel region affected: [...]
+  - Approximate area affected: XX cm²
+- **Recommendation**:
+  - [Optional remediation or next steps]
+- **Background Info**:
+  - [Relevant domain context, manufacturing insights, or frequency data]
 </answer>'''
 
 def canon_label(s: str) -> str:
